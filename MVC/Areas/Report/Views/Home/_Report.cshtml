@@ -1,0 +1,71 @@
+﻿@using Business.Models.Report;
+@model IEnumerable<ReportItemModel>
+
+<div id="report">
+	@if(Model!=null && Model.Count()>0)
+	{
+		<h1>Rapor</h1>
+		<p class="text-danger">
+			@Model.Count() Kayıt Bulundu.
+		</p>
+
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						@Html.DisplayNameFor(model => model.YapiAdi)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.YapiYapimYili)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.YapiBulunduguUlke)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.MimarAdiSoyadi)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.MimarYasiyorMu)
+					</th>
+					<th>
+						@Html.DisplayNameFor(model => model.TurAdi)
+					</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@Html.DisplayFor(modelItem => item.YapiAdi)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.YapiYapimYili)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.YapiBulunduguUlke)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.MimarAdiSoyadi)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.MimarYasiyorMu)
+						</td>
+						<td>
+							@Html.DisplayFor(modelItem => item.TurAdi)
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+	else
+	{
+		<p>
+			Kayıt Bulunamadı.
+		</p>
+	}
+
+</div>

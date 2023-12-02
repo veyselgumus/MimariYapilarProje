@@ -1,0 +1,49 @@
+﻿
+@using MVC.Areas.Report.Models;
+@model HomeIndexViewModel
+<form asp-action="Index" data-ajax="true" data-ajax-update="#report" data-ajax-model="replacewith" id="form">
+@*<form asp-action="Index">*@
+	<div class="row mb-2">
+		<div class="col-1">
+			@Html.DisplayNameFor(model=>model.Filter.YapiAdi)
+		</div>
+		<div class="col-3">
+			@Html.TextBoxFor(model=>model.Filter.YapiAdi,new{@class = "form-control textbox"})
+		</div>
+		<div class="col-1">
+			@Html.DisplayNameFor(model=>model.Filter.YapiYapimYiliBaşlangıc)
+		</div>
+		<div class="col-7">
+			<div class="input-group">
+				@Html.TextBoxFor(model=>model.Filter.YapiYapimYiliBaşlangıc , new{@class="form-control textbox " , placeholder="Yapım Yılı Başlangıç",id="dtp"})
+			<span class="input-group-text">-</span>
+				@Html.TextBoxFor(model=>model.Filter.YapiYapimYiliBitis , new{@class="form-control textbox ",placeholder="Yapım Yılı Bitiş",id="dtpi"})
+			</div>
+		</div>
+		<div class="row mb-2">
+		<div class="col-2">
+			@Html.DisplayNameFor(model=>model.Filter.MimarAdi)
+		</div>
+		<div class="col-4">
+			@*@Html.TextBoxFor(model=>model.MimarAdi,new{@class="form-control textbox"})*@
+				@Html.DropDownListFor(model=>model.Filter.MimarId,Model.MimarSelectList,"--Tüm Mimarlar--",new{@class="form-select ",id="mimar"})
+		</div>
+		<div class="col-2">
+			@Html.DisplayNameFor(model=>model.Filter.TurAdi)
+		</div>
+		<div class="col-4">
+			@*@Html.TextBoxFor(model=>model.Filter.TurAdi,new{@class="form-control textbox"})*@
+				@Html.ListBoxFor(model=>model.Filter.TurId,Model.TurSelectList,new{@class="form-select ",id="tur"})
+		</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="offset-1 col-11">
+			<button class="btn btn-success">Ara</button>
+			&nbsp;&nbsp;
+			@*@Html.ActionLink("Clear","Index","Home",null,new{@class="btn btn-warning",id="clear"})*@
+			<a href ="" class="btn btn-warning" id="clear">Temizle</a>
+
+		</div>
+	</div>
+</form>
